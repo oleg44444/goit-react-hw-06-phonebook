@@ -26,5 +26,5 @@ export const contactsSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addContact, delContact, updateFilter } = contactsSlice.actions;
 export default contactsSlice.reducer;
-export const contacts = state => state.contacts.items;
+export const contacts = state => state.contacts.contacts;
 export const filter = state => state.contacts.filter;
