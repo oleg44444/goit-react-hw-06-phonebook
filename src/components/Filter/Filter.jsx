@@ -1,6 +1,16 @@
 import React from 'react';
-import styles from './Filte.module.css';
-const Filter = ({ value, filterByName }) => {
+import styles from './Filter.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateFilter } from '../../redux/contactsSlice';
+
+const Filter = () => {
+  const dispatch = useDispatch();
+  const value = useSelector(state => state.contacts.filter);
+
+  const changeFilter = e => {
+    dispatch(updateFilter(e.target.value));
+  };
+
   return (
     <label className={styles.filterLabel}>
       Find contacts by name
@@ -8,9 +18,10 @@ const Filter = ({ value, filterByName }) => {
         className={styles.filterInput}
         type="text"
         value={value}
-        onChange={filterByName}
+        onChange={changeFilter}
       />
     </label>
   );
 };
+
 export default Filter;
